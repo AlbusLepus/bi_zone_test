@@ -1,7 +1,11 @@
+"""
+Tests for tags_counter.processing module.
+"""
 from tags_counter.processing import handle_html_page, handle_html_url
 
 
 def test_handle_html_page_simple_success():
+    """ handle_html_page test1 """
     url = "http://test.url"
     page = """
     <html>
@@ -24,6 +28,7 @@ def test_handle_html_page_simple_success():
 
 
 def test_handle_html_page_simple_fail():
+    """ handle_html_page test2 """
     url = "http://test.url"
     page = "simple string"
     expected = {
@@ -34,6 +39,7 @@ def test_handle_html_page_simple_fail():
 
 
 def test_handle_html_url_success():
+    """ handle_html_url test1 """
     url = "http://facebook.com"
     result = handle_html_url(url)
     # not asserting the exact dict because who knows
@@ -46,10 +52,10 @@ def test_handle_html_url_success():
 
 
 def test_handle_html_url_simple_fail():
+    """ handle_html_url test2 """
     url = "http://test.test"
     expected = {
         "error_message": f"Could not get from url http://test.test.",
         "url": "http://test.test"
     }
     assert handle_html_url(url) == expected
-

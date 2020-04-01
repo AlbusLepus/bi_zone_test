@@ -10,7 +10,7 @@ from tags_counter.utils import count_elems
 
 def handle_html_url(url: str) -> dict:
     """
-    Method counts every tag from the html page.
+    Method gets html page from url and launches handling.
     :param url: url-address of html page to handle
     :return: dict with url and (dict with counted html tags or error message)
     """
@@ -25,7 +25,13 @@ def handle_html_url(url: str) -> dict:
     return handle_html_page(url, page.content)
 
 
-def handle_html_page(url, page) -> dict:
+def handle_html_page(url: str, page: str) -> dict:
+    """
+    Method gets all tags from html page and launches counting.
+    :param url: url-address of html page to handle
+    :param page: html page to handle
+    :return: dict with url and (dict with counted html tags or error message)
+    """
     result = {"url": url}
     tree = html.fromstring(page)
 
